@@ -1,22 +1,10 @@
 /** Global variables */
-const nav = document.querySelector(".nav");
-const container = document.querySelector(".section-container");
-
+const nav = document.querySelector(".nav"); //Get the nav element to add the dynamic menu
+const container = document.querySelector(".section-container"); //Get the container div to add the sections
 
 /** Building content  */
 function buildContent(){
-    const list = document.createElement("ul");
-
     for(let i = 1; i < 5; i++){
-        // Building Menu-nav
-        const item = document.createElement("li");
-        //item.id = `link${i}`;
-        item.classList.add(`section${i}`);
-        item.classList.add("links");
-        item.textContent = `Section ${i}`;
-        item.addEventListener("click", goSection);
-        list.appendChild(item);
-
         //Building Sections
         container.insertAdjacentHTML("beforeend", `<section id="section${i}">
                                                         <h1>Section ${i}</h1>
@@ -54,6 +42,21 @@ function buildContent(){
                                                         </p>
                                                     </section>`);
     }
+}
+
+/** Creat menu-nav dynamic */
+function buildMenu(){
+    const sections = Array.from(document.getElementsByTagName("section"));
+    const list = document.querySelector("ul");
+
+    for(const section of sections){
+        const item = document.createElement("li");
+        item.classList.add(section.id);
+        item.classList.add("links");
+        item.textContent = section.id;
+        item.addEventListener("click", goSection);
+        list.appendChild(item);     
+    }
     nav.appendChild(list);
 }
 
@@ -82,6 +85,7 @@ function activeContent(){
 //Call functions 
 //Content
 buildContent();
+buildMenu();
 
 //Active Content
 /**
@@ -107,7 +111,6 @@ document.addEventListener("scroll", activeContent);
 // Match Manu-nav item with the right section  
 function goSection(event){
     event.preventDefault();
-    //console.log(this.classList[0]);
     
     // Getting the section id through the menu-nav className
     const secItem = document.getElementById(this.classList[0]);

@@ -16,7 +16,7 @@ header{
     padding: 10px 5px 10px 5px;
     background: rgb(153, 153, 153);
     position: sticky;  
-    height: 70px;  
+    height: 55px;  
     width: 100%;    
     z-index: 999;
     /* border: 1px solid yellow; */
@@ -24,7 +24,7 @@ header{
 
 .logo{
     font-family: 'Great Vibes', cursive;
-    font-size: 45px;
+    font-size: 30px;
     font-weight: bolder;
     color: rgba(255, 68, 0, 0.705);
 }
@@ -70,6 +70,7 @@ li{
     font-size: 4rem;
     font-weight: 900;
     text-shadow: 5px 5px 5px rgba(9, 34, 88, 0.514);
+    text-align: center;
 }
 /* Sections */
 section{
@@ -107,9 +108,17 @@ footer{
 }
 
 @media(min-width:600px){
+    header{
+        height: 70px;
+    }
+
     li{ 
         font-size: 16px;
         font-weight: bolder;
+    }
+
+    .logo{
+        font-size: 45px;
     }
     
     .links:hover{
